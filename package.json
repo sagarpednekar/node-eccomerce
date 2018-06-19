@@ -1,0 +1,21 @@
+{
+  "name": "node-crud-operations",
+  "version": "1.0.0",
+  "description": "Insert , update, delete , using node",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sagar Pednekar",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "express-paginate": "^1.0.0",
+    "mongodb-stitch": "^3.0.3",
+    "mongoose": "^5.1.5",
+    "mongoose-paginate": "^5.0.3",
+    "nodemon": "^1.17.5"
+  }
+}
