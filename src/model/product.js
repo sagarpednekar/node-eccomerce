@@ -4,9 +4,11 @@ const Schema = mongoose.Schema;
 
 
 const ProductSchema = new Schema({
-    pname: String,
+    name: String,
     price: Number,
-    quantity: Number
+    quantity: Number,
+    imagePath: String,
+    description: String,
 });
 //Create Model
 //ProductSchema.plugin(mongoosePaginate);

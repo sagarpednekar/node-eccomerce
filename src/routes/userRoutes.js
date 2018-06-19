@@ -20,8 +20,37 @@ router.post("/user/new", (req, res) => {
         }
     });
 });
-
-
+router.get("/user/:userid", (req, res) => {
+    var userid = req.params.userid;
+    //myemp._id = mongoose.Types.ObjectId();
+    User.findById(userid,(err,data)=>{
+        if(err)
+            res.json(err);
+        res.json(data);
+        console.log(data);
+    })    
+    });
+    router.get("/user", (req, res) => {
+        //myemp._id = mongoose.Types.ObjectId();
+        User.find((err,data)=>{
+            if(err)
+                res.json(err);
+            res.json(data);
+            console.log(data);
+        })    
+        });
+        router.get("/:userid/:cartid", (req, res) => {
+            var userid = req.params.userid;
+            var cartid = req.params.cartid;
+            
+            //myemp._id = mongoose.Types.ObjectId();
+            User.find((err,data)=>{
+                if(err)
+                    res.json(err);
+                res.json(data);
+                console.log(data);
+            })    
+            });
 
 
 module.exports = router;

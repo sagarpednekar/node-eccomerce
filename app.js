@@ -2,14 +2,18 @@ const express = require("express");
 const app = express();
 const fs = require('fs');
 const PORT = 3000;
+const session = require('express-session');
+var cookieParser = require('cookie-parser');
+const mongoSession = require('connect-mongodb-session')(session);
 const mongoose = require("mongoose");
-let url = "mongodb://localhost:27017/orders"
+let url = "mongodb://localhost:27017/orders";
 var bodyParser = require('body-parser');
+const cartRoutes = require('./src/routes/cartRoutes');  // require order routes  
 const orderRoutes = require('./src/routes/orderRoutes');  // require order routes  
 const productRoutes = require('./src/routes/productRoutes'); // routes for products
 const userRoutes = require('./src/routes/userRoutes'); // routes for users
-//const cartRoutes = require('./src/routes/cartRoutes')
 app.use(bodyParser.json()); //Parses the text as JSON and exposes the resulting object on req.body
+
 /**
  * Parses the text as URL encoded data (which is how browsers tend to send form data from regular forms set to POST) 
  * and exposes the resulting object (containing the keys and values) on req.body
@@ -20,12 +24,16 @@ let employee_data = '';
 /**
  * Moogoose connection
  * */
-mongoose.connect(url).then((db) => {
+
+ mongoose.connect(url).then((db) => {
     console.log("Database Connected");
-    app.use('',orderRoutes);
-    app.use('',productRoutes);
-    app.use('',userRoutes);
-  //  app.use('',cartRoutes);
+    //app.use('',orderRoutes);
+    //app.use('',productRoutes);
+    
+  app.use('',userRoutes);
+   app.use('',cartRoutes);
+
+
 });
 
 
