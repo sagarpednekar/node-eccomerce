@@ -5,7 +5,6 @@ var Order = require('../model/order');
 var Product = require('../model/product');
 var User = require('../model/user');
 
-
 // read
 router.get("/", (req, res) => {
     Order.find({}, (err, orders) => {

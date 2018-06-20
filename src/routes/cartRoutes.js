@@ -7,27 +7,14 @@ var Cart = require('../model/cart')
 router.get('/add-to-cart/:userID/:id', function (req, res, next) {
     var productId = req.params.id;
     var userId = req.params.userID;
+    var cart = new Cart;
     //find user
-   
     Cart.findOne({user: userId},(err,data)=>{
-        var storedItem = data._id = {qty: 0, item: data, price: 0};
         if (err) {
             console.error(err);
         }
-        var cart = data;
-        cart.totalQty ++;
-        storedItem.qty ++;
-        cart.totalPrice = data.price * storedItem.qty;
-        cart.items = storedItem;
-        cart.update((err, doc) => {
-            if (err) {
-                res.send(err);
-            }
-            else {
-                console.log(doc);
-                res.json(cart);
-            }
-        }); 
+        console.log(data._id);
+        res.json(data);
     })
 /*     Product.findById(productId,(err,data)=>{
         if(err) res.send(err);
